@@ -207,20 +207,30 @@ namespace Logica
             return Booleanos;
         }
 
-
+        /// <summary>
+        /// Genera una lista con fechas para utilizar
+        /// </summary>
+        /// <param name="cantidades">Cantidad de fechas necesitadas</param>
+        /// <param name="fechaDesde">Inicio de rango de fechas</param>
+        /// <param name="fechaHasta">Fin del rango de fechas</param>
+        /// <returns></returns>
         public List<string> GeneradorFecha(int cantidades, DateTime fechaDesde, DateTime fechaHasta)
         {
             List<string> Fechas = new List<string>();
             DateTime fecha;
+            validoRangoFechas(fechaDesde, fechaHasta);
 
             for (int i = 0; i == cantidades; i++)
             {
                 
             }
         }
+        
+        
+        public List<string> GeneradorListaPersonalizada(int cantidades, List<string> lista)
+        {
 
-
-
+        }
 
 
         #region Validaciones
@@ -232,7 +242,14 @@ namespace Logica
         /// <param name="numeroFinal">Numero final del rango</param>
         private void validoRangoNumeros(ref int numeroInicial, ref int numeroFinal)
         {
+            int tmpNum;
 
+            if ( numeroInicial > numeroFinal)
+            {
+                tmpNum = numeroFinal;
+                numeroFinal = numeroInicial;
+                numeroInicial = tmpNum;
+            }
         }
 
         /// <summary>
@@ -242,8 +259,17 @@ namespace Logica
         /// <param name="fechaFinal">Fecha final del rango</param>
         private void validoRangoFechas(ref DateTime fechaInicial, ref DateTime fechaFinal)
         {
+            DateTime tmpDate;
 
+            if (fechaInicial > fechaFinal)
+            {
+                tmpDate = fechaFinal;
+                fechaFinal = fechaInicial;
+                fechaInicial = tmpDate;
+            }
         }
+
+
         #endregion
 
     }
