@@ -21,10 +21,11 @@ namespace Interfaz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Logica.LogicaBase.Instancia.MotorDeBD = 2;
-            int numero = Logica.LogicaBase.Instancia.MotorDeBD;
-            MessageBox.Show(Logica.LogicaBase.Instancia.RutaDeEjecucion);
-            Logica.LogicaBase.Instancia.ConfigurarListasAutomaticas();
+            Random random = new Random();
+            double numero;
+            numero = random.Next(0, 2);
+            MessageBox.Show(numero.ToString().Replace(",", "."));
+
         }
 
 

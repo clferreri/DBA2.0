@@ -88,8 +88,9 @@ namespace Logica
 
         #endregion
 
+        #region Metodos
 
-        //Configura los parametros necesarios para hacer funcionar la aplicacion
+        ///<summary>Configura los parametros necesarios para hacer funcionar la aplicacion</summary>
         public bool ConfigurarListasAutomaticas()
         {
             CargarNombres();
@@ -99,10 +100,8 @@ namespace Logica
         }
 
 
-        /// <summary>
-        /// Genera una lista de nombres que el sistema podra utilizar
-        /// </summary>
-        private void CargarNombres() 
+        /// <summary>Genera una lista de nombres que el sistema podra utilizar/// </summary>
+        private void CargarNombres()
         {
             string rutaArchivo = rutaDeEjecucion + "\\Lista Generadores";
             string nombLista = "\\Nombres.txt";
@@ -126,7 +125,7 @@ namespace Logica
 
                     #region Nombres
 
-                 
+
                     escribir.WriteLine("##################################################################");
                     escribir.WriteLine("### LISTA CON 150 NOMBRES PARA GENERADOR AUTOMATICO DE NOMBRES ###");
                     escribir.WriteLine("###------------------------------------------------------------###");
@@ -418,9 +417,7 @@ namespace Logica
 
         }
 
-        /// <summary>
-        /// Genera una lista de apellidos que el sistema podra utilizar
-        /// </summary>
+        /// <summary>Genera una lista de apellidos que el sistema podra utilizar</summary>
         private void CargarApellidos()
         {
             string rutaArchivo = rutaDeEjecucion + "\\Lista Generadores";
@@ -792,6 +789,9 @@ namespace Logica
                 throw;
             }
         }
+
+        #endregion
+
 
 
     }
