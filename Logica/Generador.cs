@@ -59,8 +59,9 @@ namespace Logica
                 nombre = LogicaBase.Instancia.ListaDeNombres[random.Next(1, 74)];
                 Nombres.Add(nombre);
             }
-            
+            string hola;
             return Nombres;
+
         }
     }
 }
