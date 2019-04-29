@@ -22,11 +22,23 @@ namespace Interfaz
         private void button1_Click(object sender, EventArgs e)
         {
             Random random = new Random();
-            double numero;
-            numero = random.Next(0, 2);
-            MessageBox.Show(numero.ToString().Replace(",", "."));
+            string verdaderoFalso = "True";
+            if (random.Next(0,2) == 0)
+            {
+                verdaderoFalso = "False";
+            }
 
-        }
+            if (Convert.ToBoolean(0))
+            {
+                MessageBox.Show("Es verdadero");
+            }
+            else
+            {
+                MessageBox.Show("Es Falso");
+            }
+            
+
+        } 
 
 
         #region Eventos

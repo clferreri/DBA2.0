@@ -147,7 +147,7 @@ namespace Logica
         }
 
         /// <summary>
-        /// Genera una lista de enteros entre un rango establecido
+        /// Genera una lista de enteros entre un rango establecido para utilizar
         /// </summary>
         /// <param name="cantidades">cantidad de numeros necesarios</param>
         /// <param name="numeroDesde">Numero minimo del rango</param>
@@ -167,7 +167,7 @@ namespace Logica
         }
 
         /// <summary>
-        /// Genera una lista de Decimales entre un rango establecido
+        /// Genera una lista de Decimales entre un rango para utilizar
         /// </summary>
         /// <param name="cantidades">cantidad de numeros necesarios</param>
         /// <param name="numeroDesde">numero inicial del rango</param>
@@ -190,7 +190,11 @@ namespace Logica
             return Decimales;
         } 
 
-
+        /// <summary>
+        /// Genera una lista de booleanos para utilizar
+        /// </summary>
+        /// <param name="cantidades">Cantidad de booleanos necesarios</param>
+        /// <returns></returns>
         public List<int> GeneradorBooleano(int cantidades)
         {
             List<int> Booleanos = new List<int>();
@@ -199,6 +203,48 @@ namespace Logica
             {
                 Booleanos.Add(random.Next(0, 2));
             }
+
+            return Booleanos;
         }
+
+
+        public List<string> GeneradorFecha(int cantidades, DateTime fechaDesde, DateTime fechaHasta)
+        {
+            List<string> Fechas = new List<string>();
+            DateTime fecha;
+
+            for (int i = 0; i == cantidades; i++)
+            {
+                
+            }
+        }
+
+
+
+
+
+        #region Validaciones
+
+        /// <summary>
+        /// Valida que el inicial sea menor que el final. De no serlo, los invierte
+        /// </summary>
+        /// <param name="numeroInicial">Numero inicial del rango</param>
+        /// <param name="numeroFinal">Numero final del rango</param>
+        private void validoRangoNumeros(ref int numeroInicial, ref int numeroFinal)
+        {
+
+        }
+
+        /// <summary>
+        /// Valida que la fechaInicial sea menor que la final. De no serlo, las invierte
+        /// </summary>
+        /// <param name="fechaInicial">Fecha inicial del rango</param>
+        /// <param name="fechaFinal">Fecha final del rango</param>
+        private void validoRangoFechas(ref DateTime fechaInicial, ref DateTime fechaFinal)
+        {
+
+        }
+        #endregion
+
     }
 }
