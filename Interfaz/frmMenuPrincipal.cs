@@ -21,22 +21,18 @@ namespace Interfaz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Random random = new Random();
-            string verdaderoFalso = "True";
-            if (random.Next(0,2) == 0)
-            {
-                verdaderoFalso = "False";
-            }
-
-            if (Convert.ToBoolean(0))
-            {
-                MessageBox.Show("Es verdadero");
-            }
-            else
-            {
-                MessageBox.Show("Es Falso");
-            }
-            
+            int cantidad = 10;
+            Logica.Generador gen = new Logica.Generador();
+            gen.GenerarCI(cantidad, true);
+            gen.GenerarNombres(cantidad);
+            gen.GenerarApellidos(cantidad);
+            gen.GenerarEdades(cantidad);
+            gen.GeneradorBooleano(cantidad);
+            gen.GeneradorFecha(cantidad, DateTime.Today.Date, new DateTime(2019, 12, 10));
+            gen.GeneradorNumericoRandom(cantidad);
+            gen.GeneradorDecimalRandom(cantidad, 3);
+            gen.GeneradorDecimalEntreRangos(cantidad, 1, 5, 3);
+            gen.GeneradorNumericoEntreRangos(cantidad, 1, 10);
 
         } 
 

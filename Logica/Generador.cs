@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Logica
 {
-    class Generador
+    public class Generador
     {
 
         private Random random = new Random();                           //Generador de numero random
@@ -16,32 +16,39 @@ namespace Logica
         /// <param name="cantidades">Cantidad de CI necesarias</param>
         /// <param name="unico">Si es true, valida que la CI no se repita</param>
         /// <returns></returns>
-        public List<int> GenerarCI(int cantidades, bool unico)
+        public List<string> GenerarCI(int cantidades, bool unico)
         {
             //Creamos las variables necesarias
-            List<int> cedulas = new List<int>();
+            List<string> cedulas = new List<string>();
             int ci;
             bool existeCI = false;
 
-            for (int i = 0; i == cantidades; i++)
+            for (int i = 0; i < cantidades; i++)
             {
                 ci = random.Next(10000000, 70000000);
 
                 //Si se solicita que las ci no se repitan hacemos lo siguiente
                 if (unico)
                 {
-                    foreach (int cedula in cedulas)
+                    if (cedulas.Count == 0)
                     {
-                        if (ci == cedula){
-                            existeCI = true;
-                            break;
+                        cedulas.Add(ci.ToString());
+                    }
+                    else
+                    {                 
+                        foreach (string cedula in cedulas)
+                        {
+                            if (ci == Convert.ToInt32(cedula)){
+                                existeCI = true;
+                                break;
+                            }
                         }
                     }
                 } else
                 {
                     if (unico && !existeCI || !unico)
                     {
-                        cedulas.Add(ci);
+                        cedulas.Add(ci.ToString());
                     }                 
                 }
             }
@@ -59,9 +66,9 @@ namespace Logica
             List<string> Nombres = new List<string>();
             string nombre;
 
-            for (int i = 0; i == cantidaedes; i++)
+            for (int i = 0; i < cantidaedes; i++)
             {
-                nombre = LogicaBase.Instancia.ListaDeNombres[random.Next(1, 74)];
+                nombre = LogicaBase.Instancia.ListaDeNombres[random.Next(1, 74 + 1)];
                 Nombres.Add(nombre);
             }
 
@@ -79,9 +86,9 @@ namespace Logica
             List<string> Apellidos = new List<string>();
             string apellido;
 
-            for (int i = 0; i == cantidades; i++)
+            for (int i = 0; i < cantidades; i++)
             {
-                apellido = LogicaBase.Instancia.ListaDeApellidos[random.Next(1, 74)];
+                apellido = LogicaBase.Instancia.ListaDeApellidos[random.Next(1, 74 + 1)];
                 Apellidos.Add(apellido);
             }
 
@@ -93,15 +100,15 @@ namespace Logica
         /// </summary>
         /// <param name="cantidades">Cantidad de edades necesarias</param>
         /// <returns></returns>
-        public List<int> GenerarEdades(int cantidades)
+        public List<string> GenerarEdades(int cantidades)
         {
-            List<int> Edades = new List<int>();
+            List<string> Edades = new List<string>();
             int edadMin = 18;
             int edadMax = 80;
 
-            for (int i = 0; i == cantidades; i++)
+            for (int i = 0; i < cantidades; i++)
             {
-                Edades.Add(random.Next(edadMin, edadMax));
+                Edades.Add(random.Next(edadMin, edadMax + 1).ToString());
             }
 
             return Edades;
@@ -112,13 +119,13 @@ namespace Logica
         /// </summary>
         /// <param name="cantidades">cantidad de numeros que se necesitan</param>
         /// <returns></returns>
-        public List<int> GeneradorNumericoRandom(int cantidades)
+        public List<string> GeneradorNumericoRandom(int cantidades)
         {
-            List<int> NumericoRandom = new List<int>();
+            List<string> NumericoRandom = new List<string>();
 
-            for (int i = 0; i == cantidades ; i++)
+            for (int i = 0; i < cantidades ; i++)
             {
-                NumericoRandom.Add(random.Next(1, 100000));              
+                NumericoRandom.Add(random.Next(1, 100001).ToString());              
             }
 
             return NumericoRandom;
@@ -135,10 +142,10 @@ namespace Logica
             List<string> DecimalRandom = new List<string>();
             double numero;
 
-            for (int i = 0; i == cantidades; i++)
+            for (int i = 0; i < cantidades; i++)
             {
                 numero = Math.Round(random.NextDouble(), decimales);
-                numero += random.Next(1, 100000);
+                numero += random.Next(1, 100001);
                 DecimalRandom.Add(numero.ToString().Replace(",", "."));
 
             }
@@ -153,13 +160,13 @@ namespace Logica
         /// <param name="numeroDesde">Numero minimo del rango</param>
         /// <param name="numeroHasta">Numero maximo del rango</param>
         /// <returns>Lista de enteros</returns>
-        public List<int> GeneradorNumericoEntreRangos(int cantidades, int numeroDesde, int numeroHasta)
+        public List<string> GeneradorNumericoEntreRangos(int cantidades, int numeroDesde, int numeroHasta)
         {
-            List<int> Numeros = new List<int>();
+            List<string> Numeros = new List<string>();
 
-            for (int i = 0; i == cantidades; i++)
+            for (int i = 0; i < cantidades; i++)
             {
-                Numeros.Add(random.Next(numeroDesde, numeroHasta));
+                Numeros.Add(random.Next(numeroDesde, numeroHasta + 1).ToString());
             }
 
             return Numeros;
@@ -179,9 +186,9 @@ namespace Logica
             List<string> Decimales = new List<string>();
             double numeroDecimal;
 
-            for (int i = 0; i == cantidades; i++)
+            for (int i = 0; i < cantidades; i++)
             {
-                numeroDecimal = (random.Next(numeroDesde, numeroHasta) + Math.Round(random.NextDouble(), decimales));
+                numeroDecimal = (random.Next(numeroDesde, numeroHasta + 1) + Math.Round(random.NextDouble(), decimales));
                 //Remplazo la , por el . para que no haya problemas con SQL
                 Decimales.Add(numeroDecimal.ToString().Replace(",", "."));
                 
@@ -195,13 +202,13 @@ namespace Logica
         /// </summary>
         /// <param name="cantidades">Cantidad de booleanos necesarios</param>
         /// <returns></returns>
-        public List<int> GeneradorBooleano(int cantidades)
+        public List<string> GeneradorBooleano(int cantidades)
         {
-            List<int> Booleanos = new List<int>();
+            List<string> Booleanos = new List<string>();
 
-            for (int i = 0; i == cantidades; i++)
+            for (int i = 0; i < cantidades; i++)
             {
-                Booleanos.Add(random.Next(0, 2));
+                Booleanos.Add(random.Next(0, 2).ToString());
             }
 
             return Booleanos;
@@ -216,20 +223,50 @@ namespace Logica
         /// <returns></returns>
         public List<string> GeneradorFecha(int cantidades, DateTime fechaDesde, DateTime fechaHasta)
         {
+            //Variable necesarias para el generador
             List<string> Fechas = new List<string>();
-            DateTime fecha;
-            validoRangoFechas(fechaDesde, fechaHasta);
+            DateTime fecha = new DateTime(1900, 1, 1);
+            validoRangoFechas(ref fechaDesde, ref fechaHasta);
+            int dia, mes, año;
 
-            for (int i = 0; i == cantidades; i++)
+            for (int i = 0; i < cantidades; i++)
             {
+                año = random.Next(fechaDesde.Year, fechaHasta.Year + 1);
+                while (fecha < fechaDesde || fecha > fechaHasta)
+                {                   
+                    mes = random.Next(1, 13);
+
+                    if (mes == fechaDesde.Month && mes != fechaHasta.Month)
+                    {
+                        dia = random.Next(fechaDesde.Day, 31);
+                    }
+
+                    else if (mes == fechaHasta.Month && mes != fechaDesde.Month)
+                    {
+                        dia = random.Next(1, fechaHasta.Day);
+                    }
+
+                    else
+                    {
+                        dia = random.Next(fechaDesde.Day, fechaHasta.Day);
+                    }
+
+                    fecha = new DateTime(año, mes, dia);
+                }
+
                 
+                Fechas.Add(fecha.ToString());
             }
+
+            return Fechas;
         }
         
         
         public List<string> GeneradorListaPersonalizada(int cantidades, List<string> lista)
         {
+            List<string> listita = new List<string>();
 
+            return listita;
         }
 
 
