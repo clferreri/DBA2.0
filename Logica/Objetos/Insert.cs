@@ -13,7 +13,7 @@ namespace Logica.Objetos
         public List<string> GenerarScript()
         {
 
-
+            Logica.Objetos.Insert
             return inserts;
         }
     }
